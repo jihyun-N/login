@@ -8,20 +8,41 @@ const LoginPage = () => {
   const [id, setId] = useState("");
   const [password, setPassword] = useState("");
 
+  const onChangeIdHandler = (e) => {
+    setId(e.target.value);
+  };
+  const onChangePasswordHandler = (e) => {
+    setPassword(e.target.value);
+  };
+
+  const onSubmitHandler = async (e) => {
+    e.preventDefault();
+    try {
+      const { data } = await authApi.post("/register", {
+        id,
+        password,
+      });
+      console.log("data", data);
+    } catch (error) {
+      alert(error.message);
+      console.log(error);
+    }
+  };
+
   return (
     <div>
       <h1>Login</h1>
       <p>Login page</p>
 
-      <form onSubmit={async (e) => {}}>
+      <form onSubmit={onSubmitHandler}>
         <div>
           <label htmlFor="id">id</label>
-          <input />
+          <input onChange={onChangeIdHandler} value={id} />
         </div>
 
         <div>
           <label htmlFor="password">Password</label>
-          <input />
+          <input onChange={onChangePasswordHandler} value={password} />
         </div>
 
         <button type="submit">Login</button>

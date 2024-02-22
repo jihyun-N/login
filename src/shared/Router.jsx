@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Layout from "../components/layout";
-import Home from "../page/SearchPage";
+import Layout from "../components/layout/Layout";
+import Home from "../pages/Home.jsx";
 import SearchPage from "../pages/SearchPage";
 import TestPage from "../pages/TestPage";
 import NonAuthLayout from "../components/layout/NonAuthLayout";
@@ -14,7 +14,7 @@ export default function RouterPage() {
     <Router>
       <Routes>
         {/* 로그인 여부 상관없는 라우터 */}
-        <Route element={Layout}>
+        <Route element={<Layout />}>
           <Route path="/" element={<Home />} />
           <Route path="/search" element={<SearchPage />} />
           <Route path="/testPage" element={<TestPage />} />

@@ -1,7 +1,7 @@
 // SearchPage.jsx
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
-import postsAxios from "../axios/posts";
+import postsAxios from "../axios/posts.js";
 
 function SearchPage() {
   const [searchParams, setSearchParams] = useSearchParams();
